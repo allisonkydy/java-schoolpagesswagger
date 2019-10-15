@@ -109,11 +109,11 @@ public class StudentController
 
     // add student to course
     // PUT -- localhost:2019/students/student/{studentid}/course/{courseid}
-    @PutMapping(value = "/student/{studentid}/course/{courseid}")
-    public ResponseEntity<?> addStudentToCourse(@PathVariable long studentid, @PathVariable long courseid)
-    {
-
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+//    @PutMapping(value = "/student/{studentid}/course/{courseid}")
+//    public ResponseEntity<?> addStudentToCourse(@PathVariable long studentid, @PathVariable long courseid)
+//    {
+//
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 
 }

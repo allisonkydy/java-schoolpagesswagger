@@ -78,13 +78,13 @@ public class StudentServiceImpl implements StudentService
         return studrepos.save(currentStudent);
     }
 
-    @Override
-    public Student addStudentToCourse(long studentid, long courseid)
-    {
-        Student currentStudent = studrepos.findById(studentid).orElseThrow(() -> new ResourceNotFoundException(Long.toString(studentid)));
-
-        currentStudent.getCourses().add();
-
-        return studrepos.save(currentStudent);
-    }
+//    @Override
+//    public Student addStudentToCourse(long studentid, long courseid)
+//    {
+//        Student currentStudent = studrepos.findById(studentid).orElseThrow(() -> new ResourceNotFoundException(Long.toString(studentid)));
+//
+//        currentStudent.getCourses().add();
+//
+//        return studrepos.save(currentStudent);
+//    }
 }

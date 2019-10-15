@@ -40,7 +40,10 @@ public class StudentController
                 responseContainer = "List")
   @GetMapping(value = "/students",
               produces = {"application/json"})
-  public ResponseEntity<?> listAllStudents(HttpServletRequest request, @PageableDefault(page = 0, size = 3) Pageable pageable)
+  public ResponseEntity<?> listAllStudents(HttpServletRequest request,
+                                           @PageableDefault(page = 0,
+                                                            size = 3)
+                                               Pageable pageable)
   {
     logger.info(request.getMethod() + " " + request.getRequestURI() + " just accessed!");
 
@@ -111,8 +114,8 @@ public class StudentController
   @ApiOperation(value = "update a student")
   @ApiResponses(value = {@ApiResponse(code = 200,
                                       message = "Student Updated"), @ApiResponse(code = 404,
-                                                                              message = "Student Not Found",
-                                                                              response = ErrorDetail.class)})
+                                                                                 message = "Student Not Found",
+                                                                                 response = ErrorDetail.class)})
   @PutMapping(value = "/student/{Studentid}")
   public ResponseEntity<?> updateStudent(
       @RequestBody

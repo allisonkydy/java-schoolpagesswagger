@@ -19,5 +19,5 @@ public interface StudentService
 
     Student update(Student student, long id);
 
-//    Student addStudentToCourse(long studentid, long courseid);
+    Student addStudentToCourse(long studentid, long courseid);
 }

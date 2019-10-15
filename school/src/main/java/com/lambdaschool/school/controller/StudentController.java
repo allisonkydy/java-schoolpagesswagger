@@ -152,12 +152,20 @@ public class StudentController
   }
 
   // add student to course
-  // PUT -- localhost:2019/students/student/{studentid}/course/{courseid}
-  //    @PutMapping(value = "/student/{studentid}/course/{courseid}")
-  //    public ResponseEntity<?> addStudentToCourse(@PathVariable long studentid, @PathVariable long courseid)
-  //    {
-  //
-  //        return new ResponseEntity<>(HttpStatus.OK);
-  //    }
+  //   PUT -- localhost:2019/students/student/{studentid}/course/{courseid}
+  @ApiOperation(value = "add student to course")
+  @ApiResponses(value = {
+      @ApiResponse(code = 200,
+                   message = "Student added to Course"),
+      @ApiResponse(code = 404,
+                   message = "Resource Not Found",
+                   response = ErrorDetail.class)
+  })
+  @PutMapping(value = "/student/{studentid}/course/{courseid}")
+  public ResponseEntity<?> addStudentToCourse(@PathVariable long studentid, @PathVariable long courseid)
+  {
+      studentService.addStudentToCourse(studentid, courseid);
+      return new ResponseEntity<>(HttpStatus.OK);
+  }
 
 }

@@ -3,6 +3,7 @@ package com.lambdaschool.school.service;
 import com.lambdaschool.school.exceptions.ResourceNotFoundException;
 import com.lambdaschool.school.model.Course;
 import com.lambdaschool.school.model.Student;
+import com.lambdaschool.school.repository.CourseRepository;
 import com.lambdaschool.school.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +19,9 @@ public class StudentServiceImpl implements StudentService
 {
     @Autowired
     private StudentRepository studrepos;
+
+    @Autowired
+    private CourseRepository courserepos;
 
     @Override
     public List<Student> findAll(Pageable pageable)
@@ -79,13 +83,13 @@ public class StudentServiceImpl implements StudentService
         return studrepos.save(currentStudent);
     }
 
-//    @Override
-//    public Student addStudentToCourse(long studentid, long courseid)
-//    {
-//        Student currentStudent = studrepos.findById(studentid).orElseThrow(() -> new ResourceNotFoundException(Long.toString(studentid)));
-//
-//        currentStudent.getCourses().add();
-//
-//        return studrepos.save(currentStudent);
-//    }
+    @Override
+    public Student addStudentToCourse(long studentid, long courseid)
+    {
+        Student currentStudent = studrepos.findById(studentid).orElseThrow(() -> new ResourceNotFoundException(Long.toString(studentid)));
+
+        currentStudent.getCourses().add(courserepos.findById(courseid).orElseThrow(() -> new ResourceNotFoundException(Long.toString(courseid))));
+
+        return studrepos.save(currentStudent);
+    }
 }

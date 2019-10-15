@@ -2,6 +2,7 @@ package com.lambdaschool.school.controller;
 
 import com.lambdaschool.school.model.Instructor;
 import com.lambdaschool.school.service.InstructorService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

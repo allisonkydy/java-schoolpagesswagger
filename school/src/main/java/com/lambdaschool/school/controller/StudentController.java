@@ -3,10 +3,7 @@ package com.lambdaschool.school.controller;
 import com.lambdaschool.school.model.ErrorDetail;
 import com.lambdaschool.school.model.Student;
 import com.lambdaschool.school.service.StudentService;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +35,15 @@ public class StudentController
   @ApiOperation(value = "list all students",
                 response = Student.class,
                 responseContainer = "List")
+  @ApiImplicitParams({
+                         @ApiImplicitParam(name = "page", dataType = "integer", paramType = "query",
+                                           value = "Results page you want to retrieve (1..N)"),
+                         @ApiImplicitParam(name = "size", dataType = "integer", paramType = "query",
+                                           value = "Number of records per page."),
+                         @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "query",
+                                           value = "Sorting criteria in the format: property(,asc|desc). " +
+                                               "Default sort order is ascending. " +
+                                               "Multiple sort criteria are supported.")})
   @GetMapping(value = "/students",
               produces = {"application/json"})
   public ResponseEntity<?> listAllStudents(HttpServletRequest request,
@@ -167,5 +173,9 @@ public class StudentController
       studentService.addStudentToCourse(studentid, courseid);
       return new ResponseEntity<>(HttpStatus.OK);
   }
+
+
+  // delete
+//  @DeleteMapping(value = "/student/{studentid}/course/{courseid}")
 
 }
